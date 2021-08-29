@@ -50,7 +50,7 @@ defmodule Crawly.Worker do
             {:process_parsed_item, &process_parsed_item/1}
           ]
 
-          case :epipe.run(functions, {request, spider_name}) do
+          case Epipe.run(functions, {request, spider_name}) do
             {:error, _step, reason, _step_state} ->
               Logger.debug(
                 "Crawly worker could not process the request to #{
